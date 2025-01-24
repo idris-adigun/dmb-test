@@ -4,29 +4,31 @@
   (ngSubmit)="onSubmit()"
   class="form-field"
 >
-  <mat-grid-list cols="1" rowHeight="90px">
+  <mat-grid-list [cols]="schema.cols" [rowHeight]="schema.rowHeight">
     @for (field of schema.fields; track field.type) { @switch (field.type) {
     <!-- Text Input -->
     @case ('text'){
-    <mat-grid-tile>
-      <mat-form-field
-        [appearance]="formAppearance"
-        [ngStyle]="getStyles(field.name)?.formField"
-      >
-        <mat-label>{{ field.label }}</mat-label>
-        <input
-          matInput
-          [formControlName]="field.name"
-          [placeholder]="field.placeholder"
-          [ngStyle]="getStyles(field.name)?.input"
-        />
-      </mat-form-field>
+    <mat-grid-tile [colspan]="field.colspan" [rowspan]="field.rowspan">
+      <div class="full-width">
+        <mat-form-field
+          [appearance]="formAppearance"
+          [ngStyle]="getStyles(field.name)?.formField"
+        >
+          <mat-label>{{ field.label }}</mat-label>
+          <input
+            matInput
+            [formControlName]="field.name"
+            [placeholder]="field.placeholder"
+            [ngStyle]="getStyles(field.name)?.input"
+          />
+        </mat-form-field>
+      </div>
     </mat-grid-tile>
     }
 
     <!-- Password Input -->
     @case ('password'){
-    <mat-grid-tile>
+    <mat-grid-tile [colspan]="field.colspan" [rowspan]="field.rowspan">
       <mat-form-field
         [appearance]="formAppearance"
         [ngStyle]="getStyles(field.name)?.formField"
@@ -45,7 +47,7 @@
 
     <!-- Email Input -->
     @case ('email'){
-    <mat-grid-tile>
+    <mat-grid-tile [colspan]="field.colspan" [rowspan]="field.rowspan">
       <mat-form-field [appearance]="formAppearance">
         <mat-label>{{ field.label }}</mat-label>
         <input
@@ -61,7 +63,7 @@
     <!-- Date Picker -->
     @case ('datepicker'){
 
-    <mat-grid-tile>
+    <mat-grid-tile [colspan]="field.colspan" [rowspan]="field.rowspan">
       <mat-form-field
         [appearance]="formAppearance"
         [ngStyle]="getStyles(field.name)?.formField"
@@ -85,7 +87,7 @@
     <!-- Radio -->
     @case ('radio'){
 
-    <mat-grid-tile>
+    <mat-grid-tile [colspan]="field.colspan" [rowspan]="field.rowspan">
       <mat-radio-group
         [formControlName]="field.name"
         [ngStyle]="getStyles(field.name)?.radioGroup"
@@ -103,7 +105,7 @@
     <!-- Checkbox -->
     @case ('checkbox'){
 
-    <mat-grid-tile>
+    <mat-grid-tile [colspan]="field.colspan" [rowspan]="field.rowspan">
       <mat-checkbox
         [formControlName]="field.name"
         [ngStyle]="getStyles(field.name)?.checkbox"
@@ -115,7 +117,7 @@
     <!-- Select Dropdown -->
     @case ('select'){
 
-    <mat-grid-tile>
+    <mat-grid-tile [colspan]="field.colspan" [rowspan]="field.rowspan">
       <mat-form-field
         [appearance]="formAppearance"
         [ngStyle]="getStyles(field.name)?.formField"
@@ -136,7 +138,7 @@
     <!-- Slide Input -->
     @case ('slide-toggle'){
 
-    <mat-grid-tile>
+    <mat-grid-tile [colspan]="field.colspan" [rowspan]="field.rowspan">
       <mat-slide-toggle
         [formControlName]="field.name"
         [ngStyle]="getStyles(field.name)?.slideToggle"
@@ -148,7 +150,7 @@
     <!-- Auto-complete Input -->
     @case ('autocomplete'){
 
-    <mat-grid-tile>
+    <mat-grid-tile [colspan]="field.colspan" [rowspan]="field.rowspan">
       <mat-form-field
         class="full-width"
         [ngStyle]="getStyles(field.name)?.formField"
@@ -175,7 +177,7 @@
     }
     <!-- File Input -->
     @case ('file'){
-    <mat-grid-tile>
+    <mat-grid-tile [colspan]="field.colspan" [rowspan]="field.rowspan">
       <div (click)="selectFile.click()">
         <button mat-raised-button color="primary">Select File</button>
         <input

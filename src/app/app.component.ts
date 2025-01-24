@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { DynaFormsComponent } from './components/dyna-forms/dyna-forms.component';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
 import { DynamicMatFormsModule } from 'dynamic-mat-forms';
-import { min } from 'rxjs';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -22,6 +21,8 @@ export class AppComponent {
   formAppearance: MatFormFieldAppearance = 'outline'; // fill, outline
   formSchema = {
     formName: 'User Form',
+    rowHeight: '110px',
+    cols: '2',
     fields: [
       {
         name: 'text-input-field',
@@ -29,7 +30,8 @@ export class AppComponent {
         label: 'Username',
         placeholder: 'Enter your Username',
         validators: { required: true },
-        errorMessage: 'This field is required',
+        colspan: '1',
+        rowspan: '1',
       },
       {
         name: 'password-field',
@@ -42,7 +44,8 @@ export class AppComponent {
           maxLength: 10,
           pattern: '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])',
         },
-        errorMessage: 'This field is required',
+        colspan: '1',
+        rowspan: '1',
       },
       {
         name: 'email-field',
@@ -50,7 +53,8 @@ export class AppComponent {
         label: 'Email',
         placeholder: 'Enter your email',
         validators: { required: true, email: true },
-        errorMessage: 'This field is required',
+        colspan: '2',
+        rowspan: '1',
       },
       {
         name: 'datepicker-field',
@@ -60,7 +64,8 @@ export class AppComponent {
         validators: { required: true },
         min: new Date('01/01/1900'),
         max: new Date('01/01/2021'),
-        errorMessage: 'This field is required',
+        colspan: '2',
+        rowspan: '1',
       },
       {
         name: 'radio-field-example',
@@ -71,7 +76,8 @@ export class AppComponent {
           { value: 'user', label: 'User' },
         ],
         validators: { required: true },
-        errorMessage: 'This field is required',
+        colspan: '1',
+        rowspan: '1',
       },
       {
         name: 'autocomplete-field-one',
@@ -86,7 +92,8 @@ export class AppComponent {
           'France',
           'Italy',
         ],
-        errorMessage: 'This field is required',
+        colspan: '1',
+        rowspan: '1',
       },
       {
         name: 'autocomplete-two',
@@ -101,14 +108,16 @@ export class AppComponent {
           'France',
           'Italy',
         ],
-        errorMessage: 'This field is required',
+        colspan: '2',
+        rowspan: '1',
       },
       {
         name: 'checkbox-field',
         type: 'checkbox',
         label: 'Terms and Conditions',
         validators: { required: true },
-        errorMessage: 'This field is required',
+        colspan: '2',
+        rowspan: '1',
       },
       {
         name: 'role',
@@ -120,7 +129,8 @@ export class AppComponent {
           { value: 'user', label: 'User' },
         ],
         validators: { required: true },
-        errorMessage: 'This field is required',
+        colspan: '2',
+        rowspan: '1',
       },
       {
         name: 'slide-toggle-field',
@@ -129,30 +139,37 @@ export class AppComponent {
         min: 0,
         max: 100,
         validators: { required: true },
-        errorMessage: 'This field is required',
+        colspan: '2',
+        rowspan: '1',
       },
       {
         name: 'file-field',
         type: 'file',
         label: 'Upload File',
         validators: { required: true },
-        errorMessage: 'This field is required',
+        colspan: '2',
+        rowspan: '1',
       },
       {
         name: 'adminCode',
         type: 'text',
         label: 'Admin Code',
-        // dependsOn: { field: 'role', value: 'admin' },
-        dependsOn: { field: 'role' },
+        dependsOn: { field: 'role', value: 'admin' },
+        // dependsOn: { field: 'role' },
         validators: { requiredWhen: { field: 'role', value: 'admin' } },
-        errorMessage: 'This field is required',
+        colspan: '2',
+        rowspan: '1',
       },
     ],
   };
   // Dynamic styles for the form
   formStyles = {
     username: {
-      formField: { width: '100%', marginBottom: '0px', paddingBottom: '0px' },
+      formField: {
+        marginBottom: '0px',
+        paddingBottom: '10px',
+        marginRight: '50px',
+      },
       input: { color: 'blue', fontSize: '16px', paddingBottom: '0px' },
       error: { color: 'purple', fontSize: '12px', paddingTop: '0px' },
     },
