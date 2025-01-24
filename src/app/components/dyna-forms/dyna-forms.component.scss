@@ -1,5 +1,16 @@
 .form-field {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  width: 100%;
+}
+mat-grid-tile {
+  padding: 0px !important;
+  margin: 0px !important;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+mat-grid-tile,
+mat-form-field {
+  width: 100%;
+}
+.submit-button {
+  width: 100%;
 }

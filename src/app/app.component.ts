@@ -19,7 +19,7 @@ import { min } from 'rxjs';
 })
 export class AppComponent {
   title = 'dmb-test';
-  formAppearance: MatFormFieldAppearance = 'fill'; // fill, outline
+  formAppearance: MatFormFieldAppearance = 'outline'; // fill, outline
   formSchema = {
     formName: 'User Form',
     fields: [
@@ -29,6 +29,7 @@ export class AppComponent {
         label: 'Username',
         placeholder: 'Enter your Username',
         validators: { required: true },
+        errorMessage: 'This field is required',
       },
       {
         name: 'password-field',
@@ -41,6 +42,7 @@ export class AppComponent {
           maxLength: 10,
           pattern: '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])',
         },
+        errorMessage: 'This field is required',
       },
       {
         name: 'email-field',
@@ -48,6 +50,7 @@ export class AppComponent {
         label: 'Email',
         placeholder: 'Enter your email',
         validators: { required: true, email: true },
+        errorMessage: 'This field is required',
       },
       {
         name: 'datepicker-field',
@@ -57,6 +60,7 @@ export class AppComponent {
         validators: { required: true },
         min: new Date('01/01/1900'),
         max: new Date('01/01/2021'),
+        errorMessage: 'This field is required',
       },
       {
         name: 'radio-field-example',
@@ -67,6 +71,7 @@ export class AppComponent {
           { value: 'user', label: 'User' },
         ],
         validators: { required: true },
+        errorMessage: 'This field is required',
       },
       {
         name: 'autocomplete-field-one',
@@ -81,6 +86,7 @@ export class AppComponent {
           'France',
           'Italy',
         ],
+        errorMessage: 'This field is required',
       },
       {
         name: 'autocomplete-two',
@@ -95,12 +101,14 @@ export class AppComponent {
           'France',
           'Italy',
         ],
+        errorMessage: 'This field is required',
       },
       {
         name: 'checkbox-field',
         type: 'checkbox',
         label: 'Terms and Conditions',
         validators: { required: true },
+        errorMessage: 'This field is required',
       },
       {
         name: 'role',
@@ -112,6 +120,7 @@ export class AppComponent {
           { value: 'user', label: 'User' },
         ],
         validators: { required: true },
+        errorMessage: 'This field is required',
       },
       {
         name: 'slide-toggle-field',
@@ -120,12 +129,14 @@ export class AppComponent {
         min: 0,
         max: 100,
         validators: { required: true },
+        errorMessage: 'This field is required',
       },
       {
         name: 'file-field',
         type: 'file',
         label: 'Upload File',
         validators: { required: true },
+        errorMessage: 'This field is required',
       },
       {
         name: 'adminCode',
@@ -134,6 +145,7 @@ export class AppComponent {
         // dependsOn: { field: 'role', value: 'admin' },
         dependsOn: { field: 'role' },
         validators: { requiredWhen: { field: 'role', value: 'admin' } },
+        errorMessage: 'This field is required',
       },
     ],
   };
@@ -145,7 +157,7 @@ export class AppComponent {
       error: { color: 'purple', fontSize: '12px', paddingTop: '0px' },
     },
     email: {
-      formField: { width: '50%', marginBottom: '20px' },
+      formField: { width: '100%', marginBottom: '20px' },
       input: { color: 'green', fontSize: '16px' },
     },
     password: {

@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
 import { ObserversModule } from '@angular/cdk/observers';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatGridListModule } from '@angular/material/grid-list';
 import {
   FormBuilder,
   FormGroup,
@@ -21,6 +22,13 @@ import {
 import { CommonModule } from '@angular/common';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+interface Tile {
+  text: string;
+  cols: number;
+  rows: number;
+  color: string;
+}
+
 @Component({
   selector: 'app-dyna-forms',
   standalone: true,
@@ -39,6 +47,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatSliderModule,
     MatSlideToggleModule,
     MatAutocompleteModule,
+    MatGridListModule,
   ],
   templateUrl: './dyna-forms.component.html',
   styleUrl: './dyna-forms.component.scss',
@@ -53,7 +62,12 @@ export class DynaFormsComponent {
   filteredOptions: { [key: string]: string[] } = {};
 
   fileData: { [key: string]: File } = {};
-
+  tiles: Tile[] = [
+    { text: 'One', cols: 3, rows: 1, color: 'lightblue' },
+    { text: 'Two', cols: 1, rows: 2, color: 'lightgreen' },
+    { text: 'Three', cols: 1, rows: 1, color: 'lightpink' },
+    { text: 'Four', cols: 2, rows: 1, color: '#DDBDF1' },
+  ];
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
